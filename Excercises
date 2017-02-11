@@ -1,0 +1,87 @@
+// Example program
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void printStr(string s)
+{
+    cout<<s<<endl;
+    
+}
+
+int getInput()
+{
+    int x;
+    printStr("Enter your selection: ");
+    cin>>x;
+    return x;
+}
+
+int showMenu()
+{
+    string menuMsg = "Describe(1) - Menu:Show all(2) - Exit(0)";
+    printStr(menuMsg);
+    int choice;
+    choice = getInput();
+    return choice;
+}
+
+// sel = selection ... show a message that represents a choice in the menu
+
+int init()
+{
+    printStr("Title:Back Exercises: \nSlogan:'Remember to Work...'\n1 - push ups.\n2 - sit ups.\n");
+    return showMenu();
+         
+}
+
+void describe()
+{
+    printStr("1 - push ups.\n2 - sit ups.\n");
+    int choice;
+    choice = getInput();
+    switch(choice)
+    {
+        case 1: printStr("Push Ups: Up and Down several times.");
+            break;
+            
+        case 2: printStr("Sit ups: Jump and Squad if necessary.");
+            break;
+        
+        default: printStr("Not Found!");
+    }
+}
+
+void showAll()
+{
+    printStr("1 - push ups.\n2 - sit ups.\n");
+}
+
+void selectMenu(int choice)
+{
+    
+    
+    do
+    {
+        printStr("Title:Back Exercises: \n");
+        choice = showMenu();
+        
+        if(choice==1)
+        {
+            describe();   
+            
+        }else{
+            showAll();     
+        }
+        
+    
+    }while(choice!=0);
+}
+
+int main()
+{
+    int choice;
+    choice = init();
+    selectMenu(choice);
+}
