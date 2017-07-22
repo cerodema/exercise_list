@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<meta carset="UTC-8">
+<head>
+<title>Cookie test</title>
+</head>
+	<body>
+		<select id='color-selector' onchange='selectColorCookie()'>
+			<option value='select color'>Select Color</option>
+			<option value='red'>Red</option>
+			<option value='blue'>Blue</option>
+			<option value='gree'>Green</option>
+		</select>
+		
+		
+		<script type='text/javascript'>
+			
+			function c(str){ return document.querySelector(str); }
+			
+			window.onload = function() {
+				if(document.cookie.length != 0)
+				{
+					var nameValueArray = document.cookie.split("=");
+					c("#color-selector").value = nameValueArray[1];
+					
+					document.bgColor = nameValueArray[1];
+				}
+			};
+			
+			
+			
+			function selectColorCookie(){
+				var colorSelected = c("#color-selector").value;
+				if(colorSelected != "select color") {
+					document.bgColor = colorSelected;
+					
+					var d = new Date();
+					d.setTime( d.getTime() + 24*60*60*1000); // in millisecons (1 day)
+					
+					document.cookie = "color=" + colorSelected + ";expries=" + d.toGMTString()+ ";";
+					
+				}
+			}
+		
+
+		</script>
+	</body>
+</html>

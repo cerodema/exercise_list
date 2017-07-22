@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<meta carset="UTC-8">
+<head>
+<title>Cookie test 2</title>
+<style>
+	textarea {
+		max-width: 120px;
+		max-height: 3em;
+		border:none;
+		resize:none;
+	}
+</style>
+</head>
+	<body>
+	  <div class='container' id='fermin-cont' > 
+		<textarea id='fermin-name'>Fermin</textarea> 
+		<textarea id='fermin-undername' >11:50</textarea>
+		<button id='fermin-btn'>online</button>		
+	  </div>
+	  
+	  <div class='container' id='monica-cont' > 
+		<textarea id='monica-name'>Monica</textarea>
+		<textarea id='monica-undername' style='white-space:textareare'>16:50
+21:30</textarea>
+		<button id='monica-btn'>online</button>		
+	  </div>
+	  
+	  <div class='container' id='quinones-cont' > 
+		<textarea id='quinones-name'>Quinones</textarea>
+		<textarea id='quinones-undername' >18:50</textarea>
+		<button id='quinones-btn' onclick="alertCount('#quinones-cont')" >online</button>		
+	  </div>
+	  
+	  <button id='clear-cookie' onclick="clearCookie()">Clear</button>
+	  
+	  <script >
+	  function c(str) {return document.querySelector(str);}
+		
+		window.onload = function (){
+			if(document.cookie.length != 0){
+				var containers = document.querySelectorAll(".container");
+				setNameAndTimeGlobally(containers);
+			}
+		};
+		
+		window.onbeforeunload = function () {
+			createCookie(createCookieString(document.querySelectorAll(".container")));
+			//return "";
+		};
+		
+		function setNameAndTimeGlobally(divs) {
+			
+			var names = getNames(readCookie()[0]);
+			var times = getTimes(readCookie()[1]);
+						
+			for(var i = 0; i < divs.length; i++){
+				divs[i].children[0].value = names[i]; // name from cookie
+				divs[i].children[1].value = times[i];
+			}
+		}
+		
+		function getNameAndTime(div){
+			var name = div.children[0].value; 
+			var time = div.children[1].value;
+			return name + "&" + time;
+		}
+		
+		function alertCount(divStr) {
+			//alert(getNameAndTime(c(divStr)));
+			
+			createCookie(createCookieString(document.querySelectorAll(".container")));
+		}
+		
+		c("#fermin-btn").onclick = function() { alertCount("#fermin-cont"); };
+		c("#monica-btn").onclick = function() { alertCount("#monica-cont"); };
+
+		function createCookie(str) {
+			var d = new Date();
+			d.setTime(d.getTime() + 24*60*60*1000); // in milliseconds
+			document.cookie = str + ";expires=" + d.toGMTString() + ";";
+			// format: names=fermin,monica,quinones;times=
+		}
+		
+		function createCookieString(divs) {	
+			var names = "";
+			var times = "";
+			
+			for(var i = 0; i < divs.length; i++) {
+				names += "," + divs[i].children[0].value;
+			}
+			for(var j = 0; j < divs.length; j++) {
+				times += "," + divs[j].children[1].value;
+			}
+			
+			var cookieStr = "names=" + names.slice(1).replace("\n", " ") + "&times=" + times.slice(1).replace("\n", " ");
+			return cookieStr;
+		}
+		
+		function readCookie() {
+			var cookieArray = document.cookie.split("&");
+			return cookieArray;
+			
+			
+			
+		}
+		
+		function getNames(names) {
+			var namesArray = names.replace("names=", "").split(',');
+			return namesArray;
+		}
+		
+		function getTimes(times) {
+			var timesArray = times.replace("times=", "").split(',');
+			return timesArray;
+		}
+		
+		function clearCookie() {
+			document.cookie = "names=clear;max-age=-60";
+			//alert(document.cookie);
+			
+		}
+
+		
+	  </script>
+	</body>	
+</html>	

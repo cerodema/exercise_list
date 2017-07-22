@@ -1,0 +1,9 @@
+<NotepadPlus>
+    <Session activeView="0">
+        <mainView activeIndex="1">
+            <File firstVisibleLine="29" xOffset="0" scrollWidth="1010" startPos="1748" endPos="1748" selMode="0" lang="HTML" encoding="-1" filename="C:\Users\Worker\Documents\breakTests1\first_break_template.html" backupFilePath="" originalFileLastModifTimestamp="1499801108" mapFirstVisibleDisplayLine="-1" mapFirstVisibleDocLine="-1" mapLastVisibleDocLine="-1" mapNbLine="-1" mapHigherPos="-1" mapWidth="-1" mapHeight="-1" mapKByteInDoc="671687177" mapWrapIndentMode="-1" mapIsWrap="no" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="150" startPos="66" endPos="66" selMode="0" lang="HTML" encoding="-1" filename="C:\Users\Worker\Documents\breakTests1\Second_Break_Frontend.html" backupFilePath="" originalFileLastModifTimestamp="1499801347" mapFirstVisibleDisplayLine="-1" mapFirstVisibleDocLine="-1" mapLastVisibleDocLine="-1" mapNbLine="-1" mapHigherPos="-1" mapWidth="-1" mapHeight="-1" mapKByteInDoc="1936396502" mapWrapIndentMode="-1" mapIsWrap="no" />
+        </mainView>
+        <subView activeIndex="0" />
+    </Session>
+</NotepadPlus>
